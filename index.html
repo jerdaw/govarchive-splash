@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>govarchive.ca → HealthArchive.ca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fallback redirect for very old browsers -->
+  <meta http-equiv="refresh" content="5;url=https://healtharchive.ca/">
+
+  <style>
+    :root {
+      --page-bg: #f3f4f6;      /* Light grey */
+      --card-bg: #ffffff;      /* White */
+      --border:  #e5e7eb;
+      --text:    #111827;      /* Neutral dark */
+      --muted:   #6b7280;
+      --accent:  #2563eb;      /* Blue accent */
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --shadow:  0 16px 32px rgba(15, 23, 42, 0.10);
+      --radius-lg: 1.2rem;
+      --radius-pill: 999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background-color: var(--page-bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    main {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 2.25rem 2.25rem 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 1rem;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.15;
+      margin: 0 0 0.75rem;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0.3rem 0;
+      font-size: 0.98rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.4rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.96rem;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.30);
+      transition: transform 0.14s ease, box-shadow 0.14s ease,
+        background-color 0.14s ease;
+    }
+
+    .button span {
+      margin-left: 0.35rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(37, 99, 235, 0.38);
+      text-decoration: none;
+      background-color: #1d4ed8;
+    }
+
+    .button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+    }
+
+    .meta {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+
+    .countdown-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .host-info {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.75rem 1.5rem 1.6rem;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      .host-info {
+        text-align: left;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const target = "https://healtharchive.ca/";
+      const secondsTotal = 5;
+      let secondsLeft = secondsTotal;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const el = document.getElementById("countdown");
+        if (!el) return;
+
+        el.textContent = String(secondsLeft);
+
+        const timer = setInterval(function () {
+          secondsLeft -= 1;
+          if (secondsLeft <= 0) {
+            clearInterval(timer);
+            window.location.href = target;
+            return;
+          }
+          el.textContent = String(secondsLeft);
+        }, 1000);
+      });
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <section class="card" aria-labelledby="title">
+      <div class="pill">
+        <span class="pill-dot" aria-hidden="true"></span>
+        <span>Domain redirect notice</span>
+      </div>
+
+      <h1 id="title">
+        <span>govarchive.ca</span> now redirects to HealthArchive.ca
+      </h1>
+
+      <p>
+        The <strong>govarchive.ca</strong> domain is part of the independent
+        <strong>HealthArchive.ca</strong> project. Our primary home is
+        <a href="https://healtharchive.ca/">HealthArchive.ca</a>.
+      </p>
+
+      <p class="muted">
+        You’ll be redirected automatically in
+        <strong><span id="countdown">5</span> seconds</strong>.
+      </p>
+
+      <a class="button" href="https://healtharchive.ca/">
+        Go to HealthArchive.ca now <span>↗</span>
+      </a>
+
+      <div class="meta">
+        <p class="countdown-text">
+          If you are not redirected, please use the button above.
+        </p>
+        <p class="host-info">
+          HealthArchive is an independent, non-governmental archive of Canadian
+          public health information.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
